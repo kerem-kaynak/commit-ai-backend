@@ -4,7 +4,7 @@ const fastify = require('fastify')({
 	disableRequestLogging: false
 })
 
-fastify.get('/', async (req, res) => { res.send({ test: 'hello' }) })
+fastify.get('/', async (req, res) => { res.send({ test: 'hello2' }) })
 
 const PORT = parseInt(parseInt(process.env.PORT)) || 8080
 const HOST = parseInt(parseInt(process.env.HOST)) || '0.0.0.0'
