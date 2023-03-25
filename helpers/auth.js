@@ -1,10 +1,6 @@
 var admin = require('firebase-admin')
 require('dotenv').config()
 
-admin.initializeApp({
-	credential: admin.credential.applicationDefault()
-})
-
 const getAuthToken = (req, res, next) => {
 	if (
 		req.headers.authorization &&
