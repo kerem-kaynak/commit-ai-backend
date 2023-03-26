@@ -1,7 +1,7 @@
 const { checkIfAuthenticated } = require('./helpers/auth')
 const cors = require('@fastify/cors')
 const { createDeck, getDecks } = require('./helpers/decks')
-const { createCard, getCards, getCard } = require('./helpers/cards')
+const { createCard, getCards, getCard, deleteCard } = require('./helpers/cards')
 
 const fastify = require('fastify')({
 	logger: true,
@@ -77,6 +77,16 @@ fastify.route({
 	handler: async (req, res) => {
 		const card = await getCard(req.query.userId, req.query.deckId, req.query.cardId)
 		res.status(200).send(card)
+	}
+})
+
+fastify.route({
+	method: 'POST',
+	url: '/deleteCard',
+	// preHandler: checkIfAuthenticated,
+	handler: async (req, res) => {
+		const deleteCardResponse = await deleteCard(req.body.userId, req.body.deckId, req.body.cardId)
+		res.status(200).send(deleteCardResponse)
 	}
 })
 

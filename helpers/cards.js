@@ -25,4 +25,9 @@ const getCard = async (userId, deckId, cardId) => {
 	return { id: res.id, ...res.data() }
 }
 
-module.exports = { createCard, getCards, getCard }
+const deleteCard = async (userId, deckId, cardId) => {
+	const res = await db.collection('users').doc(userId).collection('decks').doc(deckId).collection('cards').doc(cardId).delete()
+	return res
+}
+
+module.exports = { createCard, getCards, getCard, deleteCard }
