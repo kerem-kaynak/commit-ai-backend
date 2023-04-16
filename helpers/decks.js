@@ -20,4 +20,13 @@ const getDecks = async (userId) => {
 	return decks
 }
 
-module.exports = { createDeck, getDecks }
+const deleteDeck = async (userId, deckId) => {
+	const cards = await db.collection('users').doc(userId).collection('decks').doc(deckId).collection('cards').get()
+	cards.docs.forEach((doc) => {
+		doc.ref.delete()
+	})
+	const res = await db.collection('users').doc(userId).collection('decks').doc(deckId).delete()
+	return res
+}
+
+module.exports = { createDeck, getDecks, deleteDeck }
