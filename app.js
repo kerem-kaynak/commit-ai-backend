@@ -10,14 +10,11 @@ const fastify = require('fastify')({
 })
 
 const registerCors = async () => {await fastify.register(cors, { 
-	// put your options here
 	origin: true,
 	methods: ['GET']
 })}
 
 registerCors()
-
-fastify.get('/', async (req, res) => { res.send({ test: 'hello2' }) })
 
 fastify.route({
 	method: 'GET',
