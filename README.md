@@ -46,7 +46,7 @@ To run and develop Commit AI locally:
 ```
 npm run dev
 ```
-## Access Commit AI in production
+## Access Commit AI in production (Currently down-ish)
 
 Commit AI is deployed and live at https://app.commit-ai.com
 
